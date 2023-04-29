@@ -6,6 +6,7 @@ public enum Tipo {
     Tipo(int valorTipo){
         valor = valorTipo;
     }
+
     public int getValor(){
         return valor;
     }
