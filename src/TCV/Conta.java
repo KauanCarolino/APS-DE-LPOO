@@ -26,6 +26,8 @@ public class Conta {
             dataVencimento = compra.getData().plusDays(5);
         }
 
+        total += compra.getValorTotal();
+
         return true;
     }
 
