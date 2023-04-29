@@ -27,8 +27,13 @@ public class Cliente {
         return enderecos;
     }
 
-    public void setEnderecos(String[] enderecos) {
-        this.enderecos = enderecos;
+    public void adicionarEndereco(Endereco endereco) {
+        for (int i = 0; i < enderecos.length; i++) {
+            if (enderecos[i] == null) {
+                enderecos[i] = endereco.toString();
+                break;
+            }
+        }
     }
 
     public String getCpf() {
@@ -54,4 +59,9 @@ public class Cliente {
     public void setLimiteDeCredito(double limiteDeCredito) {
         this.limiteDeCredito = limiteDeCredito;
     }
+
+    public boolean podeComprar(double valorTotal) {
+        return valorTotal <= limiteDeCredito;
+    }
 }
+
