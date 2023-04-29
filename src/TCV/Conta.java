@@ -7,6 +7,7 @@ public class Conta {
     private double total;
     private Cliente cliente;
 
+
     public boolean adicionarCompra(Compra compra) {
         if (compra.getTipo() == TipoCompra.PRAZO && dataVencimento != null && LocalDate.now().isAfter(dataVencimento)) {
             return false;

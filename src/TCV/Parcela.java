@@ -1,10 +1,10 @@
 package TCV;
 
 import java.time.LocalDate;
-public class Parcela extends Fatura{
+public class Parcela {
     private LocalDate dataVencto;
     private double valor;
     private float juros;
-    private Enum tipo;
+    private TipoPagamento tipo;
     private LocalDate dataPagto;
 }

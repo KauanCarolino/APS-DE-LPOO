@@ -1,7 +1,7 @@
 package TCV;
 
 import java.time.LocalDate;
-public class Fatura extends Conta{
+public class Fatura extends Parcela{
     private Conta conta;
     private LocalDate dataQuitacao;
     private float juros;
