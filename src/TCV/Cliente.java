@@ -5,7 +5,7 @@ public class Cliente {
     private String enderecos[] = new String[3];
     private String cpf;
     private String cnpj;
-    private double limiteDeCredito;
+    private double limiteDeCredito = 1000;
 
     public Cliente(String nome, String[] enderecos, String cpf, String cnpj, double limiteDeCredito) {
         this.nome = nome;
