@@ -1,12 +1,15 @@
 package TCV;
 
-public class Cliente {
+public abstract class Cliente {
     private String nome;
     private String enderecos[] = new String[3];
     private String cpf;
     private String cnpj;
     private double limiteDeCredito = 1000;
 
+    public Cliente(String nome, String cpf){
+
+    }
     public Cliente(String nome, String[] enderecos, String cpf, String cnpj, double limiteDeCredito) {
         this.nome = nome;
         this.enderecos = enderecos;
@@ -14,6 +17,7 @@ public class Cliente {
         this.cnpj = cnpj;
         this.limiteDeCredito = limiteDeCredito;
     }
+
 
     public String getNome() {
         return nome;
@@ -63,5 +67,7 @@ public class Cliente {
     public boolean podeComprar(double valorTotal) {
         return valorTotal <= limiteDeCredito;
     }
+
+    public abstract void exibirDados();
 }
 
