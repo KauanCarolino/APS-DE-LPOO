@@ -20,7 +20,6 @@ public class Fatura {
         this.quantidadeParcelas = quantidadeParcelas;
         this.parcelas = new ArrayList<>();
 
-        // Adicionar cada parcela do array à lista
         for (int parcela : parcelas) {
             this.parcelas.add(parcela);
         }
@@ -58,7 +57,7 @@ public class Fatura {
 
     public double calcularJurosPorParcelamento(TipoPagamento tipo) {
         double juros = 0;
-        int maxParcelas = 3; // Máximo de parcelas permitidas
+        int maxParcelas = 3;
 
         if (quantidadeParcelas > maxParcelas) {
             System.out.println("Parcelamento não permitido. Máximo de parcelas: " + maxParcelas);

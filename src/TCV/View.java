@@ -80,7 +80,7 @@ public class View {
         System.out.println("2. Visualizar e Alterar Fatura");
         System.out.print("Escolha uma opção: ");
         int opcao = scanner.nextInt();
-        scanner.nextLine(); // Limpar o buffer
+        scanner.nextLine();
 
         switch (opcao) {
             case 1:
@@ -104,17 +104,15 @@ public class View {
 
         System.out.print("Escolha um Cliente (0 para cancelar): ");
         int escolha = scanner.nextInt();
-        scanner.nextLine(); // Limpar o buffer
+        scanner.nextLine();
 
         if (escolha > 0 && escolha <= clientes.size()) {
             Cliente cliente = clientes.get(escolha - 1);
 
-            // Exibir os dados atuais do Cliente
             System.out.println("--- Dados Atuais do Cliente ---");
             cliente.exibirDados();
             System.out.println();
 
-            // Solicitar as alterações
             System.out.println("--- Alterar Cliente ---");
             System.out.print("Nome (Deixe em branco para manter o valor atual): ");
             String nome = scanner.nextLine();
@@ -122,7 +120,6 @@ public class View {
                 cliente.setNome(nome);
             }
 
-            // Se for um Cliente Físico, permitir alterar o CPF
             if (cliente instanceof ClienteFisico) {
                 ClienteFisico clienteFisico = (ClienteFisico) cliente;
                 System.out.print("CPF (Deixe em branco para manter o valor atual): ");
@@ -148,17 +145,15 @@ public class View {
 
         System.out.print("Escolha uma Fatura (0 para cancelar): ");
         int escolha = scanner.nextInt();
-        scanner.nextLine(); // Limpar o buffer
+        scanner.nextLine();
 
         if (escolha > 0 && escolha <= faturas.size()) {
             Fatura fatura = faturas.get(escolha - 1);
 
-            // Exibir os dados atuais da Fatura
             System.out.println("--- Dados Atuais da Fatura ---");
             fatura.exibirDados();
             System.out.println();
 
-            // Solicitar as alterações
             System.out.println("--- Alterar Fatura ---");
             System.out.print("Valor Total (Deixe 0 para manter o valor atual): ");
             double valorTotal = scanner.nextDouble();
@@ -185,7 +180,7 @@ public class View {
         System.out.println("2. Excluir Fatura");
         System.out.print("Escolha uma opção: ");
         int opcao = scanner.nextInt();
-        scanner.nextLine(); // Limpar o buffer
+        scanner.nextLine();
 
         switch (opcao) {
             case 1:
@@ -208,7 +203,7 @@ public class View {
 
         System.out.print("Escolha um Cliente (0 para cancelar): ");
         int escolha = scanner.nextInt();
-        scanner.nextLine(); // Limpar o buffer
+        scanner.nextLine();
 
         if (escolha > 0 && escolha <= clientes.size()) {
             Cliente cliente = clientes.get(escolha - 1);
@@ -246,7 +241,7 @@ public class View {
 
         System.out.print("Escolha uma Fatura (0 para cancelar): ");
         int escolha = scanner.nextInt();
-        scanner.nextLine(); // Limpar o buffer
+        scanner.nextLine();
 
         if (escolha > 0 && escolha <= faturas.size()) {
             Fatura fatura = faturas.get(escolha - 1);
@@ -290,8 +285,7 @@ public class View {
             System.out.println("8. Sair");
             System.out.print("Escolha uma opção: ");
             opcao = scanner.nextInt();
-            scanner.nextLine(); // Limpar o buffer
-
+            scanner.nextLine();
             switch (opcao) {
                 case 1:
                     cadastrarClienteFisico();
