@@ -114,5 +114,13 @@ public class Fatura {
     public int getQuantidadeParcelas() {
         return quantidadeParcelas;
     }
+
+    public double getValorTotal() {
+        return valorTotal;
+    }
+
+    public void setValorTotal(double valorTotal) {
+        this.valorTotal = valorTotal;
+    }
 }
 
