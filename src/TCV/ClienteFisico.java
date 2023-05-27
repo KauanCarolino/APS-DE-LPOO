@@ -6,8 +6,9 @@ public class ClienteFisico extends Cliente{
 
     public ClienteFisico(String nome, String cpf) {
         super(nome, cpf);
+        this.setNome(nome);
+        this.setCpf(cpf);
     }
-
 
     @Override
     public void exibirDados(){
