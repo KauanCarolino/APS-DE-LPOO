@@ -1,4 +1,8 @@
-package TCV;
+package Rodando_Aplicativo;
+
+import TCV.Cliente;
+import TCV.Fatura;
+import TCV.View;
 
 import java.util.ArrayList;
 
