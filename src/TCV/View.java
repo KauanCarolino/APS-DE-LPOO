@@ -19,7 +19,7 @@ public class View {
         String nome = scanner.nextLine();
         System.out.print("CPF: ");
         String cpf = scanner.nextLine();
-        Cliente cliente = new ClienteFisico(nome, cpf);
+        Cliente cliente = new ClienteFisico(nome,cpf);
         clientes.add(cliente);
         System.out.println("Cliente cadastrado com sucesso.");
     }

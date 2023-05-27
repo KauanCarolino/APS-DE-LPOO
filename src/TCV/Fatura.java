@@ -18,7 +18,7 @@ public class Fatura {
         this.dataQuitacao = dataQuitacao;
         this.juros = juros;
         this.quantidadeParcelas = quantidadeParcelas;
-        this.parcelas = new ArrayList<Integer>();
+        this.parcelas = new ArrayList<>();
 
         // Adicionar cada parcela do array à lista
         for (int parcela : parcelas) {
@@ -30,9 +30,12 @@ public class Fatura {
     }
 
     public Fatura(double valorTotal) {
+        this.valorTotal = valorTotal;
+        this.parcelas = new ArrayList<>();
+        this.isFaturaQuitada = false;
     }
 
-    public void quitarFatura(LocalDate dataQuitacao){
+    public void quitarFatura(LocalDate dataQuitacao) {
         if (parcelas.size() == quantidadeParcelas) {
             this.dataQuitacao = dataQuitacao;
             isFaturaQuitada = true;
@@ -53,7 +56,7 @@ public class Fatura {
         return 0;
     }
 
-    public double calcularJurosPorParcelamento(TipoPagamento tipo){
+    public double calcularJurosPorParcelamento(TipoPagamento tipo) {
         double juros = 0;
         int maxParcelas = 3; // Máximo de parcelas permitidas
 
@@ -85,7 +88,7 @@ public class Fatura {
         return (valorTotal * juros) / quantidadeParcelas;
     }
 
-    public double jurosPorAtraso(){
+    public double jurosPorAtraso() {
         int diasAtraso = (int) ChronoUnit.DAYS.between(dataVencimento, dataQuitacao);
         if (diasAtraso > 0) {
             if (diasAtraso <= 15) {
@@ -99,15 +102,16 @@ public class Fatura {
         return juros;
     }
 
-    public void exibirDados(){
-        System.out.println("Valor Total: "+valorTotal);
-        System.out.println("Parcelas: "+quantidadeParcelas);
+    public void exibirDados() {
+        System.out.println("Valor Total: " + valorTotal);
+        System.out.println("Parcelas: " + quantidadeParcelas);
     }
 
-    public void setQuantidadeParcelas(int quantidadeParcelas){
+    public void setQuantidadeParcelas(int quantidadeParcelas) {
         this.quantidadeParcelas = quantidadeParcelas;
     }
-    public int getQuantidadeParcelas(){
+
+    public int getQuantidadeParcelas() {
         return quantidadeParcelas;
     }
 }
