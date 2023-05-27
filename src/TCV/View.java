@@ -72,7 +72,7 @@ public class View {
             System.out.println("---------------------");
         }
     }
-    //
+
     public void visualizarEAlterarObjeto() {
         Scanner scanner = new Scanner(System.in);
         System.out.println("--- Visualizar e Alterar Objeto ---");
@@ -178,11 +178,107 @@ public class View {
         }
     }
     //
+    public void excluirObjeto() {
+        Scanner scanner = new Scanner(System.in);
+        System.out.println("--- Excluir Objeto ---");
+        System.out.println("1. Excluir Cliente");
+        System.out.println("2. Excluir Fatura");
+        System.out.print("Escolha uma opção: ");
+        int opcao = scanner.nextInt();
+        scanner.nextLine(); // Limpar o buffer
+
+        switch (opcao) {
+            case 1:
+                excluirCliente();
+                break;
+            case 2:
+                excluirFatura();
+                break;
+            default:
+                System.out.println("Opção inválida. Tente novamente.");
+        }
+    }
+    private void excluirCliente() {
+        Scanner scanner = new Scanner(System.in);
+        System.out.println("Selecione o Cliente a ser excluído:");
+
+        for (int i = 0; i < clientes.size(); i++) {
+            System.out.println((i + 1) + ". " + clientes.get(i).getNome());
+        }
+
+        System.out.print("Escolha um Cliente (0 para cancelar): ");
+        int escolha = scanner.nextInt();
+        scanner.nextLine(); // Limpar o buffer
+
+        if (escolha > 0 && escolha <= clientes.size()) {
+            Cliente cliente = clientes.get(escolha - 1);
+
+            if (verificarDependenciasCliente(cliente)) {
+                System.out.println("Não é possível excluir o Cliente. Existem dependências com outros objetos.");
+                return;
+            }
+
+            System.out.print("Tem certeza que deseja excluir o Cliente? (S/N): ");
+            String confirmacao = scanner.nextLine();
+
+            if (confirmacao.equalsIgnoreCase("S")) {
+                clientes.remove(cliente);
+                System.out.println("Cliente excluído com sucesso.");
+            } else {
+                System.out.println("Operação cancelada.");
+            }
+        } else if (escolha != 0) {
+            System.out.println("Opção inválida.");
+        }
+    }
+
+    private boolean verificarDependenciasCliente(Cliente cliente) {
+        return false;
+    }
+
+    private void excluirFatura() {
+        Scanner scanner = new Scanner(System.in);
+        System.out.println("Selecione a Fatura a ser excluída:");
+
+        for (int i = 0; i < faturas.size(); i++) {
+            System.out.println((i + 1) + ". Fatura " + (i + 1));
+        }
+
+        System.out.print("Escolha uma Fatura (0 para cancelar): ");
+        int escolha = scanner.nextInt();
+        scanner.nextLine(); // Limpar o buffer
+
+        if (escolha > 0 && escolha <= faturas.size()) {
+            Fatura fatura = faturas.get(escolha - 1);
+
+            if (verificarDependenciasFatura(fatura)) {
+                System.out.println("Não é possível excluir a Fatura. Existem dependências com outros objetos.");
+                return;
+            }
+
+            System.out.print("Tem certeza que deseja excluir a Fatura? (S/N): ");
+            String confirmacao = scanner.nextLine();
+
+            if (confirmacao.equalsIgnoreCase("S")) {
+                faturas.remove(fatura);
+                System.out.println("Fatura excluída com sucesso.");
+            } else {
+                System.out.println("Operação cancelada.");
+            }
+        } else if (escolha != 0) {
+            System.out.println("Opção inválida.");
+        }
+    }
+
+    private boolean verificarDependenciasFatura(Fatura fatura) {
+        return false;
+    }
+    //
     public void exibirMenuPrincipal() {
         Scanner scanner = new Scanner(System.in);
         int opcao = 0;
 
-        while (opcao != 7) {
+        while (opcao != 8) {
             System.out.println("--- MENU PRINCIPAL ---");
             System.out.println("1. Cadastrar Cliente Físico");
             System.out.println("2. Cadastrar Cliente Jurídico");
@@ -190,7 +286,8 @@ public class View {
             System.out.println("4. Listar Clientes");
             System.out.println("5. Listar Faturas");
             System.out.println("6. Visualizar e Alterar Objeto");
-            System.out.println("7. Sair");
+            System.out.println("7. Excluir Objeto");
+            System.out.println("8. Sair");
             System.out.print("Escolha uma opção: ");
             opcao = scanner.nextInt();
             scanner.nextLine(); // Limpar o buffer
@@ -215,6 +312,9 @@ public class View {
                     visualizarEAlterarObjeto();
                     break;
                 case 7:
+                    excluirObjeto();
+                    break;
+                case 8:
                     System.out.println("Saindo...");
                     break;
                 default:
