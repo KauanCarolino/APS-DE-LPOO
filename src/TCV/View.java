@@ -41,10 +41,15 @@ public class View {
         System.out.println("Cadastro de Fatura");
         System.out.print("Valor Total: ");
         double valorTotal = scanner.nextDouble();
+
         Fatura fatura = new Fatura(valorTotal);
+
         System.out.println("Digite as parcelas (0 para finalizar):");
         int parcela = scanner.nextInt();
-        while (parcela != 0) {
+        int quantidadeParcelas = scanner.nextInt();
+        fatura.setQuantidadeParcelas(quantidadeParcelas);
+
+        while (parcela == 0) {
             fatura.adicionarParcela(parcela);
             parcela = scanner.nextInt();
         }
