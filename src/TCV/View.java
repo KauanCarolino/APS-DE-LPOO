@@ -19,7 +19,9 @@ public class View {
         String nome = scanner.nextLine();
         System.out.print("CPF: ");
         String cpf = scanner.nextLine();
-        Cliente cliente = new ClienteFisico(nome,cpf);
+        System.out.print("Data de Nascimento: ");
+        String dataNasc = scanner.nextLine();
+        Cliente cliente = new ClienteFisico(nome,cpf,dataNasc);
         clientes.add(cliente);
         System.out.println("Cliente cadastrado com sucesso.");
     }
@@ -31,7 +33,9 @@ public class View {
         String nome = scanner.nextLine();
         System.out.print("CNPJ: ");
         String cnpj = scanner.nextLine();
-        Cliente cliente = new ClienteJuridico(nome, cnpj);
+        System.out.print("Inscricao Estadual: ");
+        String inscricaoEstadual = scanner.nextLine();
+        Cliente cliente = new ClienteJuridico(nome, cnpj, inscricaoEstadual);
         clientes.add(cliente);
         System.out.println("Cliente cadastrado com sucesso.");
     }
@@ -58,6 +62,7 @@ public class View {
     }
 
     public void listarClientes() {
+        System.out.println(" ");
         System.out.println("Clientes cadastrados:");
         for (Cliente cliente : clientes) {
             cliente.exibirDados();
@@ -66,6 +71,7 @@ public class View {
     }
 
     public void listarFaturas() {
+        System.out.println(" ");
         System.out.println("Faturas cadastradas:");
         for (Fatura fatura : faturas) {
             fatura.exibirDados();
@@ -75,6 +81,7 @@ public class View {
 
     public void visualizarEAlterarObjeto() {
         Scanner scanner = new Scanner(System.in);
+        System.out.println(" ");
         System.out.println("--- Visualizar e Alterar Objeto ---");
         System.out.println("1. Visualizar e Alterar Cliente");
         System.out.println("2. Visualizar e Alterar Fatura");
@@ -109,10 +116,12 @@ public class View {
         if (escolha > 0 && escolha <= clientes.size()) {
             Cliente cliente = clientes.get(escolha - 1);
 
+            System.out.println(" ");
             System.out.println("--- Dados Atuais do Cliente ---");
             cliente.exibirDados();
             System.out.println();
 
+            System.out.println(" ");
             System.out.println("--- Alterar Cliente ---");
             System.out.print("Nome (Deixe em branco para manter o valor atual): ");
             String nome = scanner.nextLine();
@@ -126,6 +135,33 @@ public class View {
                 String cpf = scanner.nextLine();
                 if (!cpf.isEmpty()) {
                     clienteFisico.setCpf(cpf);
+                }
+            }
+
+            if (cliente instanceof ClienteFisico) {
+                ClienteFisico clienteFisico = (ClienteFisico) cliente;
+                System.out.print("Data de Nascimento (Deixe em branco para manter o valor atual): ");
+                String dataNasc = scanner.nextLine();
+                if (!dataNasc.isEmpty()) {
+                    clienteFisico.setDataNasc(dataNasc);
+                }
+            }
+
+            if (cliente instanceof ClienteJuridico) {
+                ClienteJuridico clienteJuridico = (ClienteJuridico) cliente;
+                System.out.print("CNPJ (Deixe em branco para manter o valor atual): ");
+                String cnpj = scanner.nextLine();
+                if (!cnpj.isEmpty()) {
+                    clienteJuridico.setCnpj(cnpj);
+                }
+            }
+
+            if (cliente instanceof ClienteJuridico) {
+                ClienteJuridico clienteJuridico = (ClienteJuridico) cliente;
+                System.out.print("Inscricao Estadual (Deixe em branco para manter o valor atual): ");
+                String inscricaoEstadual = scanner.nextLine();
+                if (!inscricaoEstadual.isEmpty()) {
+                    clienteJuridico.setInscricaoEstadual(inscricaoEstadual);
                 }
             }
 

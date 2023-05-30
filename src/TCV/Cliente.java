@@ -7,9 +7,7 @@ public abstract class Cliente {
     private String cnpj;
     private double limiteDeCredito = 1000;
 
-    public Cliente(String nome, String cpf){
-
-    }
+    public Cliente(String nome, String cpf){}
     public Cliente(String nome, String[] enderecos, String cpf, String cnpj, double limiteDeCredito) {
         this.nome = nome;
         this.enderecos = enderecos;
@@ -26,6 +24,7 @@ public abstract class Cliente {
     public void setNome(String nome) {
         this.nome = nome;
     }
+
 
     public String[] getEnderecos() {
         return enderecos;
