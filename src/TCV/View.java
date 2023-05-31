@@ -63,6 +63,7 @@ public class View {
 
     public void listarClientes() {
         System.out.println(" ");
+            System.out.println("---------------------");
         System.out.println("Clientes cadastrados:");
         for (Cliente cliente : clientes) {
             cliente.exibirDados();
@@ -72,6 +73,7 @@ public class View {
 
     public void listarFaturas() {
         System.out.println(" ");
+            System.out.println("---------------------");
         System.out.println("Faturas cadastradas:");
         for (Fatura fatura : faturas) {
             fatura.exibirDados();
